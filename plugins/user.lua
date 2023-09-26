@@ -1,12 +1,20 @@
 return {
-  -- You can also add new plugins here as well:
-  -- Add plugins, the lazy syntax
-  -- "andweeb/presence.nvim",
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "BufRead",
-  --   config = function()
-  --     require("lsp_signature").setup()
-  --   end,
-  -- },
+  -- name: neovim-prjorject
+  -- repo: https://github.com/coffebar/neovim-project
+  {
+    "coffebar/neovim-project",
+    config = function()
+      vim.opt.sessionoptions:append("globals")
+      require("neovim-project").setup {
+        projects = {
+          "~/Project/lingostar/*"
+        },
+      }
+    end,
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim", tag = "0.1.0" },
+      { "Shatur/neovim-session-manager" },
+    }
+  }
 }
